@@ -1,0 +1,142 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Consulta Actual</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/principal.css" %}">
+
+</head>
+
+<body>
+    <!--Barra de Navegación-->
+    {% include 'conversionesApp/navbar.html' %}
+    <div class="container-fluid" id="tbl_container">
+        <hr>
+        <h3>Resumen de la Simulación Actual</h3>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Código</th>
+                    <td>{{unitCode}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Artículo</th>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Proveedor</th>
+                    <td>{{supplier}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Cantidad</th>
+                    <td>{{unitsAmount}} unidades</td>
+                </tr>
+                <tr>
+                    <th scope="row">Costo del pedido CLP</th>
+                    <td>${{totalAmount}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Costo de envío CLP</th>
+                    <td>${{shippingPrice}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Impuesto Aduana CLP</th>
+                    <td>${{customCLP}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">IVA CLP</th>
+                    <td>${{ivaCLP}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total impuestos CLP</th>
+                    <td>${{totalTaxes}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total a pagar CLP</th>
+                    <td>${{totalPurchaseCLP}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total a pagar USD</th>
+                    <td>{{totalPurchase}} USD</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fecha</th>
+                    <td>{{date}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Hora</th>
+                    <td>{{time}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+    <div class="container-fluid" id="tbl_history">
+        <hr>
+        <p></p>
+        <h3>Historial de simulaciones</h3>
+        <hr>
+        <div>
+            <a href="simular" class="btn btn-primary">Simular de nuevo</a>
+        </div>
+        <table id="tbl_simulaciones" class="display" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Artículo</th>
+                    <th>Proveedor</th>
+                    <th>Cantidad</th>
+                    <th>Costo pedido</th>
+                    <th>Envío</th>
+                    <th>Arancel aduanero</th>
+                    <th>IVA</th>
+                    <th>Total Impuestos</th>
+                    <th>Total CLP</th>
+                    <th>Total USD</th>
+                    <th>Fecha y hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sim in simulations %}
+                <tr>
+                    <td>{{sim.unitCode}}</td>
+                    <td>{{sim.unitName}}</td>
+                    <td>{{sim.supplierName}}</td>
+                    <td>{{sim.unitAmount}} uds.</td>
+                    <td>${{sim.totalAmountCLP}}</td>
+                    <td>${{sim.shippingCLP}}</td>
+                    <td>${{sim.customCLP}}</td>
+                    <td>${{sim.ivaCLP}}</td>
+                    <td>${{sim.totalTaxesCLP}}</td>
+                    <td>${{sim.totalPurchaseCLP}}</td>
+                    <td>{{sim.totalPurchaseUSD}} USD</td>
+                    <td>{{sim.date}} {{sim.time}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include 'conversionesApp/footer.html'%}
+</body>
+<script>
+    new DataTable('#tbl_simulaciones');
+</script>
+</body>
+
+</html>

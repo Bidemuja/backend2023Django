@@ -1,0 +1,102 @@
+/* Color de fondo de página */
+body {
+    background: url("../images/delivery_1280x914.png");
+    color: azure;
+}
+
+/*Barra de navegación*/
+.navbar-brand {
+    padding-left: 40px;
+}
+
+#navbarSupportedContent{
+    margin-left: 450px;
+}
+
+#img-navbar {
+    border-radius: 60%;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+ /*Título de secciones*/
+#titulo-seccion {
+    color: azure;
+    width: 500px;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/*Formato del contenedor del formulario*/
+#contenedor-formulario{
+    border-radius: 5%;
+    background-color:rgb(39, 37, 37);
+    color: azure;
+    background-size: contain;
+    width: 500px;
+    height: fit-content;
+    padding-bottom: 35px;
+}
+
+#titulo-seccion2 {
+    color: azure;
+    width: 300px;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#contenedor-resumen{
+    border-radius: 5%;
+    background-color:gray;
+    color:black;
+    background-size: contain;
+    width: max-content;
+    text-align: center;
+    height: fit-content;
+    padding: 15px;
+}
+
+/*Contenedor de resumen*/
+#tbl_container{
+    text-align: center;
+    padding-left: 150px;
+    padding-right: 150px;
+    color: aliceblue;
+    border-color: azure;
+    height: 500px;
+    padding-bottom: 100px;
+}
+/*Tabla históricos*/
+#tbl_history{
+    padding-top: 150px;
+    text-align: center;
+    color:aliceblue;
+}
+#tbl_simulaciones{
+    background-color: black;
+}
+#tabla_simulaciones_contenedor{
+    height: 500px;
+}
+
+/*Formato filas*/
+tr{
+    color:aliceblue;
+    background-color: rgb(52, 50, 50);
+}
+/*Formato de celdas de fila*/
+td{
+    color: rgb(159, 219, 219);
+}
+
+/*Footer fin de página*/
+#footerGeneral{
+    background-color: black;
+}
+.nav-item a {
+    color:aliceblue;
+    text-decoration:none;
+    background-color: black;
+}
